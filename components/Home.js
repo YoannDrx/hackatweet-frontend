@@ -9,6 +9,8 @@ import LastTweets from './LastTweets';
 import Trends from './Trends';
 import styles from '../styles/Home.module.css';
 
+const fetch = require('node-fetch')
+
 function Home() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
@@ -27,7 +29,7 @@ function Home() {
       return;
     }
 
-    fetch(`https://hackatweet-backend-seven.vercel.app/tweets/all/${user.token}`)
+    fetch(`http://localhost:3000/tweets/all/${user.token}`)
       .then(response => response.json())
       .then(data => {
         data.result && dispatch(loadTweets(data.tweets));
@@ -41,7 +43,7 @@ function Home() {
   };
 
   const handleSubmit = () => {
-    fetch('https://hackatweet-backend-seven.vercel.app/tweets', {
+    fetch('http://localhost:3000/tweets', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ token: user.token, content: newTweet }),
