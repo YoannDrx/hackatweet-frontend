@@ -7,14 +7,13 @@ import Image from 'next/image';
 import Moment from 'react-moment';
 import styles from '../styles/Tweet.module.css';
 
-const fetch = require('node-fetch')
 
 function Tweet(props) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
 
   const handleLike = () => {
-    fetch('http://localhost:3000/tweets/like', {
+    fetch('https://hackatweet-backend-seven.vercel.app/tweets/like', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ token: user.token, tweetId: props._id }),

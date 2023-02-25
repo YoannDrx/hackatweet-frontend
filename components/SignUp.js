@@ -5,7 +5,6 @@ import { login } from '../reducers/user';
 import Image from 'next/image';
 import styles from '../styles/SignUp.module.css';
 
-const fetch = require('node-fetch')
 
 function SignUp() {
   const dispatch = useDispatch();
@@ -22,7 +21,7 @@ function SignUp() {
   const [password, setPassword] = useState('');
 
   const handleSubmit = () => {
-    fetch('http://localhost:3000/users/signup', {
+    fetch('https://hackatweet-backend-seven.vercel.app/users/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ firstName, username, password }),

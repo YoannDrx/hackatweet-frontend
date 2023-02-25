@@ -9,7 +9,6 @@ import Tweet from './Tweet';
 import Trends from './Trends';
 import Image from 'next/image';
 
-const fetch = require('node-fetch')
 
 function Hashtag() {
   const dispatch = useDispatch();
@@ -32,7 +31,7 @@ function Hashtag() {
 
     setQuery('#' + hashtag);
 
-    fetch(`http://localhost:3000/tweets/hashtag/${user.token}/${hashtag}`)
+    fetch(`https://hackatweet-backend-seven.vercel.app/tweets/hashtag/${user.token}/${hashtag}`)
       .then(response => response.json())
       .then(data => {
         data.result && dispatch(loadTweets(data.tweets));

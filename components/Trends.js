@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import styles from '../styles/Trends.module.css';
 
-const fetch = require('node-fetch')
 
 function Trends() {
   const user = useSelector((state) => state.user.value);
@@ -12,7 +11,7 @@ function Trends() {
   const [trendsData, setTrendsData] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/tweets/trends/${user.token}`)
+    fetch(`https://hackatweet-backend-seven.vercel.app/tweets/trends/${user.token}`)
       .then(response => response.json())
       .then(data => {
         data.result && setTrendsData(data.trends);

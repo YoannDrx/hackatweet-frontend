@@ -5,7 +5,6 @@ import { login } from '../reducers/user';
 import Image from 'next/image';
 import styles from '../styles/SignIn.module.css';
 
-const fetch = require('node-fetch')
 
 function SignIn() {
   const dispatch = useDispatch();
@@ -21,7 +20,7 @@ function SignIn() {
   const [password, setPassword] = useState('');
 
   const handleSubmit = () => {
-    fetch('http://localhost:3000/users/signin', {
+    fetch('https://hackatweet-backend-seven.vercel.app/users/signin', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password }),
